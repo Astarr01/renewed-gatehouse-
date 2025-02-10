@@ -1,0 +1,1302 @@
+/* Global Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body and Page Layout */
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #f0f4f9;
+    color: #444;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+    flex-direction: column;
+    overflow-x: hidden;
+    scroll-behavior: smooth; /* Smooth scrolling */
+    text-align: center; /* Center text in most elements */
+}
+
+/* Main Application Container */
+#app {
+    width: 100%;
+    max-width: 1100px;
+    background-color: #fff;
+    padding: 50px;
+    border-radius: 20px;
+    box-shadow: 0 20px 70px rgba(0, 0, 0, 0.15);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 50px;
+    position: relative;
+    overflow: auto;
+    animation: fadeIn 0.8s ease-out;
+}
+
+/* Fade-in effect for the container */
+@keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+/* Heading */
+h1 {
+    font-size: 3.5rem;
+    color: #333;
+    text-align: center;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    text-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    animation: slideIn 1s ease-out;
+}
+
+/* Slide-in effect for the heading */
+@keyframes slideIn {
+    0% { transform: translateY(-30px); opacity: 0; }
+    100% { transform: translateY(0); opacity: 1; }
+}
+
+/* Parking Permit Card */
+.permit-card {
+    width: 100%;
+    max-width: 900px;
+    background: #1a3d58;
+    padding: 60px;
+    border-radius: 25px;
+    box-shadow: 0 25px 70px rgba(0, 0, 0, 0.2);
+    position: relative;
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow: hidden;
+    border: 5px solid #ffbc00;
+    background: linear-gradient(145deg, #1a3d58, #2c5077);
+    transform: scale(1);
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    animation: cardAppear 0.8s ease-out;
+    text-align: left; /* Align content inside the card */
+}
+
+.permit-card:hover {
+    transform: scale(1.03);
+    box-shadow: 0 25px 80px rgba(0, 0, 0, 0.25);
+}
+
+/* Card Appearance Animation */
+@keyframes cardAppear {
+    0% { opacity: 0; transform: translateY(20px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+
+/* Permit Badge */
+.permit-card .badge {
+    background-color: #ffbc00;
+    padding: 12px 30px;
+    border-radius: 15px;
+    font-weight: 800;
+    font-size: 1.4rem;
+    color: #333;
+    text-transform: uppercase;
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Permit Title */
+.permit-card h2 {
+    font-size: 2.5rem;
+    color: #fff;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-bottom: 30px;
+    letter-spacing: 2px;
+    animation: fadeInTitle 0.8s ease-out;
+}
+
+/* Fade-in effect for permit title */
+@keyframes fadeInTitle {
+    0% { opacity: 0; transform: translateY(-20px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+
+/* Permit Details Form */
+.permit-details {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    width: 100%;
+    position: relative;
+    animation: fadeIn 0.8s ease-out;
+    justify-items: center; /* Centering form inputs */
+}
+
+/* Form Labels */
+.permit-details label {
+    font-size: 1rem;
+    color: #fff;
+    font-weight: 600;
+    margin-bottom: 8px;
+    display: block;
+}
+
+/* Input and Select Styling */
+.permit-details input,
+.permit-details select {
+    padding: 16px;
+    font-size: 1rem;
+    border-radius: 12px;
+    border: 2px solid #fff;
+    background-color: rgba(255, 255, 255, 0.8);
+    color: #333;
+    box-shadow: inset 0 0 12px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease, border-color 0.3s ease;
+    width: 100%; /* Make inputs fill available space */
+}
+
+.permit-details input:focus,
+.permit-details select:focus {
+    outline: none;
+    border-color: #34a853;
+    box-shadow: inset 0 0 12px rgba(52, 168, 83, 0.2);
+}
+
+/* Floating Labels */
+.permit-details input:focus + label,
+.permit-details select:focus + label {
+    font-size: 0.9rem;
+    color: #34a853;
+    transform: translateY(-25px);
+}
+
+/* Button States */
+.permit-details button {
+    background-color: #34a853;
+    color: white;
+    font-size: 1.2rem;
+    padding: 18px;
+    border-radius: 12px;
+    width: 100%;
+    border: none;
+    cursor: pointer;
+    margin-top: 30px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.permit-details button:hover {
+    background-color: #2e7d32;
+    transform: translateY(-3px);
+}
+
+.permit-details button:active {
+    background-color: #276736;
+}
+
+.permit-details button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+/* Data Table */
+#permit-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 40px;
+    font-size: 1rem;
+    border-radius: 12px; /* Rounded corners for the table */
+    overflow: hidden; /* Ensures the rounded corners are respected */
+    background-color: rgba(255, 255, 255, 0.85); /* Semi-transparent background */
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+}
+
+/* Table Header */
+th {
+    padding: 16px;
+    background-color: #4285f4;
+    color: white;
+    font-weight: 700;
+    text-transform: uppercase;
+    text-align: center;
+    border-top-left-radius: 12px; /* Rounded top-left corner */
+    border-top-right-radius: 12px; /* Rounded top-right corner */
+    box-shadow: inset 0 -2px 8px rgba(0, 0, 0, 0.1); /* Inner shadow for a clean effect */
+}
+
+/* Table Cells */
+td {
+    padding: 14px;
+    text-align: center;
+    background-color: rgba(255, 255, 255, 0.9); /* Slight transparency for rows */
+    color: #333;
+    border-bottom: 1px solid #ddd; /* Subtle border between rows */
+    font-size: 1rem;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Table Row Hover Effects */
+#permit-table tr:hover td {
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+/* Table Wrapper */
+#permit-table-wrapper {
+    max-height: 400px;
+    overflow-y: auto;
+    display: block;
+    border-radius: 10px;
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Footer */
+footer {
+    width: 100%;
+    background-color: #333;
+    color: white;
+    padding: 30px 0;
+    text-align: center;
+    font-size: 1rem;
+    margin-top: 50px;
+    box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.1);
+}
+
+/* Navbar */
+.navbar {
+    width: 100%;
+    background-color: #34a853;
+    padding: 20px 0;
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.navbar a {
+    color: white;
+    font-size: 1.2rem;
+    text-decoration: none;
+    font-weight: 700;
+    text-transform: uppercase;
+    padding: 12px;
+    border-radius: 10px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.navbar a:hover {
+    background-color: #2e7d32;
+    transform: translateY(-3px);
+}
+
+/* Hero Section */
+.hero {
+    width: 100%;
+    background-color: #4285f4;
+    padding: 80px 20px;
+    text-align: center;
+    color: white;
+    border-radius: 20px;
+    box-shadow: 0 15px 45px rgba(0, 0, 0, 0.2);
+    margin-top: 120px;
+    animation: fadeIn 1s ease-out;
+}
+
+.hero h2 {
+    font-size: 3.5rem;
+    margin-bottom: 20px;
+    font-weight: 700;
+}
+
+.hero p {
+    font-size: 1.3rem;
+    margin-bottom: 50px;
+}
+
+.hero button {
+    background-color: #34a853;
+    color: white;
+    font-size: 1.3rem;
+    padding: 18px 45px;
+    border-radius: 20px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.hero button:hover {
+    background-color: #2e7d32;
+    transform: translateY(-3px);
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        gap: 30px;
+        padding: 15px 0;
+    }
+
+    .hero h2 {
+        font-size: 2.8rem;
+    }
+
+    .hero p {
+        font-size: 1.1rem;
+    }
+
+    .hero button {
+        font-size: 1.2rem;
+        padding: 14px 35px;
+    }
+
+    h1 {
+        font-size: 2.8rem;
+    }
+
+    .permit-card {
+        padding: 40px;
+    }
+
+    .permit-details {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .permit-details input,
+    .permit-details select {
+        font-size: 1rem;
+    }
+
+    .navbar a {
+        font-size: 1.1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .permit-details {
+        grid-template-columns: 1fr;
+    }
+}
+/* Style for the info button */
+
+
+/* Modal styles remain the same */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+}
+
+.modal-content {
+    background-color: white;
+    margin: 15% auto;
+    padding: 20px;
+    width: 80%;
+    max-width: 500px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.close-button {
+    float: right;
+    font-size: 1.5em;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+    background-color: #fff;
+    margin: 10% auto;
+    padding: 20px;
+    border-radius: 10px;
+    width: 60%;
+    font-family: Arial, sans-serif;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.modal-content h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.modal-content table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.modal-content th,
+.modal-content td {
+    padding: 10px;
+    border: 1px solid #ddd;
+    text-align: left;
+}
+
+.modal-content th {
+    background-color: #f4f4f4;
+    font-weight: bold;
+}
+
+.close-button {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close-button:hover,
+.close-button:focus {
+    color: #000;
+    text-decoration: none;
+}
+/* Hamburger Menu Styles */
+.hamburger-menu {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    z-index: 1000;
+}
+
+#hamburger-toggle {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    font-size: 18px;
+    border-radius: 50px;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+#hamburger-toggle:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+.hamburger-content {
+    display: none;
+    position: absolute;
+    top: 50px;
+    right: 0;
+    background-color: rgba(255, 255, 255, 0.9); /* Transparent background */
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    overflow: hidden;
+    opacity: 0; /* Start invisible */
+    transform: translateY(-10px);
+    transition: opacity 0.3s ease, transform 0.3s ease; /* Smooth animation */
+}
+
+.hamburger-menu:hover .hamburger-content {
+    display: block;
+    opacity: 1;
+    transform: translateY(0); /* Animate dropdown */
+}
+
+.hamburger-content button {
+    display: block;
+    width: 100%;
+    background-color: transparent;
+    color: #007bff;
+    padding: 12px 15px;
+    text-align: left;
+    border: none;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease, color 0.3s ease; /* Button hover effect */
+}
+
+.hamburger-content button:hover {
+    background-color: rgba(0, 123, 255, 0.1);
+    color: #0056b3; /* Slightly darker blue on hover */
+}
+
+/* Last button without border */
+.hamburger-content button:last-child {
+    border-bottom: none;
+}
+modal-content {
+    font-family: Arial, sans-serif;
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 20px;
+    width: 80%;
+    margin: 0 auto;
+}
+
+.modal-title {
+    font-size: 1.8em;
+    color: #333;
+    text-align: center;
+}
+
+.copyright {
+    text-align: center;
+    color: #666;
+    font-size: 0.9em;
+}
+
+.section {
+    margin-bottom: 20px;
+}
+
+h3 {
+    color: #0056b3;
+    font-size: 1.2em;
+    margin-bottom: 10px;
+}
+
+p {
+    font-size: 1em;
+    line-height: 1.6;
+    color: #555;
+}
+
+a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+.security-logos {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.logo-container {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.security-logo {
+    height: 50px;
+    width: auto;
+}
+/* Style for the Search Tool Button */
+#search-tool-btn {
+    background-color: #4A90E2; /* Blue color */
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#search-tool-btn:hover {
+    background-color: #357ABD; /* Darker blue for hover effect */
+}
+
+/* Style for the Search Tool Container */
+.search-tool-container {
+    display: none;
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    max-width: 400px;
+    margin-top: 20px;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.search-tool-container.active {
+    display: block;
+    opacity: 1;
+}
+
+/* Style for the Search Inputs and Buttons */
+.search-tool-container input {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+}
+
+.search-tool-container button {
+    background-color: #4A90E2;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.search-tool-container button:hover {
+    background-color: #357ABD;
+}
+
+/* Style for Search Headers */
+.search-tool-container h3 {
+    font-size: 18px;
+    margin-bottom: 10px;
+    font-weight: bold;
+    color: #333;
+}
+/* Style for the Shiny Bell Button */
+.shiny-btn {
+    background-color: #FFD700; /* Gold color */
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 50%;
+    font-size: 20px;
+    cursor: pointer;
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease-in-out;
+}
+
+.shiny-btn:hover {
+    transform: scale(1.1); /* Slightly enlarge the button on hover */
+}
+
+/* Style for the Modal */
+.updates-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal-content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    width: 400px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    animation: modal-fade-in 0.3s ease-in-out;
+}
+
+@keyframes modal-fade-in {
+    from {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Style for the Close Button */
+.close-button {
+    font-size: 28px;
+    color: #333;
+    cursor: pointer;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+.close-button:hover {
+    color: #E74C3C; /* Red color on hover */
+}
+
+/* Style for Modal Heading and List */
+.updates-modal h2 {
+    font-size: 20px;
+    margin-bottom: 15px;
+    font-weight: bold;
+    color: #333;
+}
+
+.updates-modal ul {
+    list-style-type: none;
+    padding-left: 0;
+    font-size: 14px;
+    line-height: 1.8;
+    color: #555;
+}
+
+.updates-modal li {
+    margin-bottom: 10px;
+}
+
+.updates-modal strong {
+    color: #4A90E2; /* Blue color for emphasis */
+}
+/* ================== CSS Variables ================== */
+:root {
+    --primary-color: #2c3e50;
+    --accent-color: #e74c3c;
+    --success-color: #2ecc71;
+    --warning-color: #f1c40f;
+    --gradient-blue: linear-gradient(135deg, #3498db, #2980b9);
+    --gradient-red: linear-gradient(135deg, #e74c3c, #c0392b);
+    --spacing-xl: 4rem;
+    --spacing-lg: 2rem;
+    --spacing-md: 1rem;
+    --shadow-deep: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+    --shadow-soft: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    --border-radius-3d: 15px;
+}
+
+/* ================== Advanced Animations ================== */
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+@keyframes neonGlow {
+    0% { filter: drop-shadow(0 0 2px var(--accent-color)); }
+    100% { filter: drop-shadow(0 0 10px var(--accent-color)); }
+}
+
+/* ================== 3D Transform Effects ================== */
+.permit-card {
+    transform-style: preserve-3d;
+    perspective: 1000px;
+}
+
+.permit-card:hover {
+    transform: rotateY(2deg) rotateX(2deg) scale(1.02);
+}
+
+/* ================== Custom Scrollbar ================== */
+::-webkit-scrollbar {
+    width: 12px;
+    background: rgba(0,0,0,0.1);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--primary-color);
+    border-radius: 10px;
+    border: 2px solid #fff;
+}
+
+/* ================== Dark Mode ================== */
+@media (prefers-color-scheme: dark) {
+    body {
+        background-color: #1a1a1a;
+        color: #ecf0f1;
+    }
+
+    #app {
+        background-color: #2d2d2d;
+        box-shadow: 0 20px 70px rgba(255, 255, 255, 0.1);
+    }
+
+    .permit-card {
+        background: linear-gradient(145deg, #2c3e50, #34495e);
+        border-color: #e67e22;
+    }
+}
+
+/* ================== Advanced Form Validation ================== */
+input:invalid {
+    border-color: var(--accent-color) !important;
+    animation: shake 0.5s ease-in-out;
+}
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-8px); }
+    75% { transform: translateX(8px); }
+}
+
+/* ================== Preloader ================== */
+.preloader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--primary-color);
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: opacity 0.5s;
+}
+
+.spinner {
+    width: 50px;
+    height: 50px;
+    border: 5px solid #fff;
+    border-top-color: var(--accent-color);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+/* ================== Toast Notifications ================== */
+.toast {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    padding: 15px 25px;
+    border-radius: var(--border-radius-3d);
+    background: var(--gradient-blue);
+    color: white;
+    box-shadow: var(--shadow-deep);
+    transform: translateY(100%);
+    animation: slideUp 0.5s forwards;
+}
+
+@keyframes slideUp {
+    to { transform: translateY(0); }
+}
+
+/* ================== Hover Effects ================== */
+.hover-zoom {
+    transition: transform 0.3s, filter 0.3s;
+}
+
+.hover-zoom:hover {
+    transform: scale(1.05);
+    filter: brightness(1.1);
+}
+
+/* ================== Tooltips ================== */
+[data-tooltip] {
+    position: relative;
+    cursor: help;
+}
+
+[data-tooltip]:hover::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--primary-color);
+    color: white;
+    padding: 8px 15px;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    white-space: nowrap;
+    box-shadow: var(--shadow-soft);
+}
+
+/* ================== Advanced Table Features ================== */
+#permit-table {
+    position: relative;
+    overflow: hidden;
+}
+
+#permit-table tr:first-child th {
+    background: var(--gradient-blue);
+    position: sticky;
+    top: 0;
+    z-index: 2;
+}
+
+#permit-table tr:nth-child(even) td {
+    background-color: rgba(255, 255, 255, 0.95);
+}
+
+/* ================== Floating Action Button ================== */
+.fab {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: var(--gradient-red);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: var(--shadow-deep);
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.fab:hover {
+    transform: scale(1.1) rotate(90deg);
+}
+
+/* ================== Advanced Media Queries ================== */
+@media (min-width: 1920px) {
+    #app {
+        max-width: 1600px;
+    }
+    
+    h1 {
+        font-size: 4.5rem;
+    }
+}
+
+@media (max-height: 600px) {
+    .permit-card {
+        padding: 30px;
+        margin-top: 15px;
+    }
+}
+
+/* ================== Text Gradients ================== */
+.gradient-text {
+    background: var(--gradient-blue);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    font-weight: 900;
+}
+
+/* ================== Loading Skeleton ================== */
+.skeleton {
+    background: linear-gradient(90deg, #eee 25%, #f5f5f5 50%, #eee 75%);
+    background-size: 200% 100%;
+    animation: skeleton-loading 1.5s infinite;
+    border-radius: var(--border-radius-3d);
+}
+
+@keyframes skeleton-loading {
+    0% { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+}
+
+/* ================== Particle Effects ================== */
+.particle {
+    position: absolute;
+    background: rgba(255,255,255,0.7);
+    border-radius: 50%;
+    pointer-events: none;
+    animation: particle-float 3s ease-out forwards;
+}
+
+@keyframes particle-float {
+    0% { transform: translateY(0); opacity: 1; }
+    100% { transform: translateY(-100vh); opacity: 0; }
+}
+
+/* ================== Advanced Button States ================== */
+button:active {
+    transform: translateY(2px) scale(0.98);
+}
+
+button.loading {
+    position: relative;
+    color: transparent;
+}
+
+button.loading::after {
+    content: "";
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    border: 3px solid white;
+    border-top-color: transparent;
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+}
+/* ================== PARALLAX LAYERS ================== */
+.parallax-wrapper {
+    perspective: 1000px;
+    height: 100vh;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+.parallax-layer {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    transition: transform 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+/* ================== GLASSMORPHISM EFFECTS ================== */
+.glass-panel {
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+}
+
+/* ================== CUSTOM CURSOR SYSTEM ================== */
+body {
+    cursor: url('data:image/svg+xml;utf8,<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z" fill="%23007BFF"/><circle cx="12" cy="12" r="3" fill="%23007BFF"/></svg>'), auto;
+}
+
+.interactive-cursor {
+    cursor: url('data:image/svg+xml;utf8,<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="16" cy="16" r="8" fill="%23E74C3C" /><animate attributeName="r" values="8;12;8" dur="1.5s" repeatCount="indefinite"/></svg>'), pointer;
+}
+
+/* ================== GRADIENT BORDERS ================== */
+.gradient-border {
+    position: relative;
+    background: var(--primary-color);
+}
+
+.gradient-border::after {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1);
+    z-index: -1;
+    border-radius: var(--border-radius-3d);
+    animation: gradientFlow 3s linear infinite;
+}
+
+@keyframes gradientFlow {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* ================== ANIMATED CHECKMARKS ================== */
+.checkmark {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    display: block;
+    stroke-width: 4;
+    stroke: #fff;
+    stroke-miterlimit: 10;
+    animation: fill-check 0.4s ease-in-out forwards, 
+               scale-check 0.3s ease-in-out both;
+}
+
+@keyframes stroke-check {
+    100% { stroke-dashoffset: 0; }
+}
+
+@keyframes scale-check {
+    0%, 100% { transform: none; }
+    50% { transform: scale3d(1.1, 1.1, 1); }
+}
+
+/* ================== DYNAMIC BACKGROUND EFFECTS ================== */
+.cyber-grid {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    background: 
+        linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px);
+    background-size: 30px 30px;
+    pointer-events: none;
+    z-index: -1;
+    animation: grid-move 120s linear infinite;
+}
+
+@keyframes grid-move {
+    from { background-position: 0 0; }
+    to { background-position: 1500px 1500px; }
+}
+
+/* ================== HOVER-TRIGGERED INFO CARDS ================== */
+.info-card-parent:hover .info-card {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    pointer-events: all;
+}
+
+.info-card {
+    opacity: 0;
+    transform: translateY(20px) scale(0.95);
+    transition: all 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+    pointer-events: none;
+}
+
+/* ================== NEON TEXT EFFECTS ================== */
+.neon-text {
+    text-shadow: 
+        0 0 5px #fff,
+        0 0 10px #fff,
+        0 0 20px var(--accent-color),
+        0 0 40px var(--accent-color),
+        0 0 80px var(--accent-color);
+    animation: neon-pulse 1.5s infinite alternate;
+}
+
+@keyframes neon-pulse {
+    from { opacity: 0.8; }
+    to { opacity: 1; }
+}
+
+/* ================== CUSTOM FORM ELEMENTS ================== */
+.radio-3d input[type="radio"] + label {
+    background: var(--gradient-blue);
+    border: 3px solid white;
+    box-shadow: 0 8px 15px rgba(0,0,0,0.2);
+    transition: all 0.3s ease;
+}
+
+.radio-3d input[type="radio"]:checked + label {
+    transform: translateY(-5px) scale(1.05);
+    box-shadow: 0 15px 25px rgba(0,0,0,0.3);
+}
+
+/* ================== VOICE SEARCH UI ================== */
+.voice-search-btn {
+    position: relative;
+    background: var(--gradient-red);
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    animation: voice-pulse 2s infinite;
+}
+
+@keyframes voice-pulse {
+    0% { box-shadow: 0 0 0 0 rgba(231,76,60,0.7); }
+    70% { box-shadow: 0 0 0 20px rgba(231,76,60,0); }
+    100% { box-shadow: 0 0 0 0 rgba(231,76,60,0); }
+}
+
+/* ================== MULTI-STEP FORM PROGRESS ================== */
+.progress-tracker {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(50px, 1fr));
+    counter-reset: step;
+}
+
+.progress-step::before {
+    counter-increment: step;
+    content: counter(step);
+    transition: all 0.4s ease;
+}
+
+.progress-step.active::before {
+    transform: scale(1.3);
+    background: var(--gradient-blue);
+}
+
+/* ================== HOVER MAGNIFICATION ================== */
+.hover-magnify {
+    position: relative;
+    overflow: hidden;
+}
+
+.hover-magnify img {
+    transition: transform 0.5s ease;
+}
+
+.hover-magnify:hover img {
+    transform: scale(1.2) rotate(2deg);
+}
+
+/* ================== ANIMATED STATISTICS ================== */
+.counter-up {
+    font-family: 'Courier New', monospace;
+    background: var(--gradient-blue);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    transition: all 0.5s ease;
+}
+
+/* ================== CUSTOM 404 PAGE EFFECTS ================== */
+.error-404 {
+    perspective: 1000px;
+}
+
+.error-404 h1 {
+    animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0) rotateX(0); }
+    50% { transform: translateY(-20px) rotateX(20deg); }
+}
+
+/* ================== INTERACTIVE CARDS ================== */
+.interactive-card {
+    position: relative;
+    transform-style: preserve-3d;
+}
+
+.interactive-card:hover .card-front {
+    transform: rotateY(180deg);
+}
+
+.interactive-card:hover .card-back {
+    transform: rotateY(0deg);
+}
+
+.card-face {
+    backface-visibility: hidden;
+    transition: all 0.8s ease;
+}
+
+.card-back {
+    transform: rotateY(-180deg);
+}
+
+/* ================== DYNAMIC NOTIFICATION COUNTER ================== */
+.notification-badge {
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    animation: badge-pulse 1.5s infinite;
+}
+
+@keyframes badge-pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+    100% { transform: scale(1); }
+}
+
+/* ================== SMOOTH PAGE TRANSITIONS ================== */
+.page-transition {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--gradient-blue);
+    z-index: 9999;
+    animation: page-out 0.8s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+}
+
+@keyframes page-out {
+    0% { clip-path: circle(0% at 50% 50%); }
+    100% { clip-path: circle(150% at 50% 50%); }
+}

@@ -1,0 +1,792 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Permit Records Management</title>
+    <!-- Link to your CSS file -->
+    <link rel="stylesheet" href="style.css"> <!-- Add this line -->
+</head>
+
+<body>
+    <div id="app">
+        <h1>Permit Records Management</h1>
+
+        <!-- Permit Form -->
+        <form id="permit-form">
+    <div class="permit-card">
+        <h2>Parking Permit</h2>
+        <div class="permit-details">
+            <!-- Unit Number -->
+            <div class="field">
+                <label for="unit-number">Unit Number:</label>
+                <input type="text" id="unit-number" required>
+            </div>
+            
+            <!-- Visitor Name -->
+            <div class="field">
+                <label for="visitor-name">Visitor Name:</label>
+                <input type="text" id="visitor-name" required>
+            </div>
+            
+            <!-- License Plate No -->
+            <div class="field">
+                <label for="license-plate-no">License Plate No:</label>
+                <input type="text" id="license-plate-no" required>
+            </div>
+            
+            <!-- Officer Name -->
+            <div class="field">
+                <label for="officer-name">Officer Name:</label>
+                <select id="officer-name" required>
+                    <option value="">Select Officer</option>
+                    <option value="JAGROOP">JAGROOP</option>
+                    <option value="MELBIN">MELBIN</option>
+                    <option value="KARTIK">KARTIK</option>
+                    <option value="ABIY">ABIY</option>
+                    <option value="KARAN">KARAN</option>
+                    <option value="DANIYAL">DANIYAL</option>
+                    <option value="ZAMIL">ZAMIL</option>
+                </select>
+            </div>
+
+            <!-- Vehicle Make -->
+            <div class="field">
+                <label for="vehicle-make">Vehicle Make:</label>
+                <select id="vehicle-make" required>
+                    <option value="">Select Vehicle Make</option>
+                    <option value="Acura">Acura</option>
+<option value="Alfa Romeo">Alfa Romeo</option>
+<option value="Aston Martin">Aston Martin</option>
+<option value="Audi">Audi</option>
+<option value="Bentley">Bentley</option>
+<option value="BMW">BMW</option>
+<option value="Buick">Buick</option>
+<option value="Cadillac">Cadillac</option>
+<option value="Chevrolet">Chevrolet</option>
+<option value="Chrysler">Chrysler</option>
+<option value="Dodge">Dodge</option>
+<option value="Ferrari">Ferrari</option>
+<option value="Fiat">Fiat</option>
+<option value="Ford">Ford</option>
+<option value="Genesis">Genesis</option>
+<option value="GMC">GMC</option>
+<option value="Honda">Honda</option>
+<option value="Hyundai">Hyundai</option>
+<option value="Infiniti">Infiniti</option>
+<option value="Jaguar">Jaguar</option>
+<option value="Jeep">Jeep</option>
+<option value="Kia">Kia</option>
+<option value="Lamborghini">Lamborghini</option>
+<option value="Land Rover">Land Rover</option>
+<option value="Lexus">Lexus</option>
+<option value="Lincoln">Lincoln</option>
+<option value="Maserati">Maserati</option>
+<option value="Mazda">Mazda</option>
+<option value="McLaren">McLaren</option>
+<option value="Mercedes-Benz">Mercedes-Benz</option>
+<option value="Mini">Mini</option>
+<option value="Mitsubishi">Mitsubishi</option>
+<option value="Nissan">Nissan</option>
+<option value="Porsche">Porsche</option>
+<option value="Ram">Ram</option>
+<option value="Rolls-Royce">Rolls-Royce</option>
+<option value="Subaru">Subaru</option>
+<option value="Tesla">Tesla</option>
+<option value="Toyota">Toyota</option>
+<option value="Volkswagen">Volkswagen</option>
+<option value="Volvo">Volvo</option>
+                    <!-- Add more options as needed -->
+                </select>
+            </div>
+            
+            <!-- Vehicle Color -->
+            <div class="field">
+                <label for="vehicle-color">Vehicle Color:</label>
+                <select id="vehicle-color" required>
+                   <option value="">Select Vehicle Colour</option>
+<option value="Black">Black</option>
+<option value="White">White</option>
+<option value="Gray">Gray</option>
+<option value="Silver">Silver</option>
+<option value="Blue">Blue</option>
+<option value="Red">Red</option>
+<option value="Green">Green</option>
+<option value="Yellow">Yellow</option>
+<option value="Orange">Orange</option>
+<option value="Brown">Brown</option>
+<option value="Gold">Gold</option>
+<option value="Purple">Purple</option>
+<option value="Beige">Beige</option>
+<option value="Pink">Pink</option>
+<option value="Burgundy">Burgundy</option>
+<option value="Teal">Teal</option>
+<option value="Maroon">Maroon</option>
+<option value="Turquoise">Turquoise</option>
+                </select>
+            </div>
+            
+            <!-- Issue Date -->
+            <div class="field">
+                <label for="issue-date">Issue Date:</label>
+                <input type="date" id="issue-date" required>
+            </div>
+            
+            <!-- Expire Date -->
+            <div class="field">
+                <label for="expire-date">Expire Date:</label>
+                <input type="date" id="expire-date" required>
+            </div>
+
+            <!-- Submit Button -->
+            <button type="submit">Add Permit</button>
+        </div>
+    </div>
+</form>
+
+        <!-- Search Boxes -->
+       
+<button id="search-tool-btn" class="search-tool-btn">🔍 Search Tools</button>
+
+<!-- Search Tool Container -->
+<div id="search-tool-container" class="search-tool-container">
+    <div>
+        <h3>Search Permits:</h3>
+        <input type="text" id="search-permits" placeholder="Search by Permit Number, Unit, Visitor Name">
+        <button onclick="searchPermits()">Search</button>
+    </div>
+
+    <div>
+        <h3>Search Remaining Permits for a Unit in Current Month:</h3>
+        <input type="text" id="unit-search" placeholder="Enter Unit Number">
+        <button onclick="searchRemainingPermits()">Search</button>
+    </div>
+</div>
+<!-- New Updates Button -->
+<button id="new-updates-btn" class="shiny-btn">🔔</button>
+
+<!-- New Updates Modal -->
+<div id="new-updates-modal" class="updates-modal">
+    <div class="modal-content">
+        <span class="close-button">&times;</span>
+        <h2>Version 0.03</h2>
+        <ul>
+            <li><strong>Fully Updated:</strong> The system has been comprehensively refined to ensure optimal performance and reliability.</li>
+            <li><strong>Report Issues:</strong> If you encounter any bugs or issues, please report them to senior staff for prompt resolution.</li>
+        </ul>
+    </div>
+</div>
+
+
+
+
+<div class="hamburger-menu">
+    <button id="hamburger-toggle">☰</button>
+    <div class="hamburger-content">
+        <button id="info-button">About</button>
+        <button id="guards-info-button">Show Guard Details</button>
+        <button id="generate-report-button">Generate Monthly Report</button>
+		   <button id="export-btn">Export to Excel</button>
+		<button onclick="location.href='index2.html'">User Guide</button>
+    </div>
+</div>
+
+
+
+
+<!-- Info Modal -->
+<div id="info-modal" class="modal">
+    <div class="modal-content">
+        <span class="close-button">&times;</span>
+        <h2 class="modal-title">Platform Information</h2>
+        <p class="copyright">&copy; 2025 Gatehouse. All Rights Reserved.</p>
+
+        <div class="section">
+            <h3>Platform Overview</h3>
+            <p>This platform serves as a temporary offline solution specifically designed for managing parking operations at Rainbow Lounge. It is still in its testing phase, and we appreciate your understanding as we fine-tune the system. If you encounter any errors or issues, please promptly report them to Supervisor Melbin So that the problem can be addressed and resolved as quickly as possible.</p>
+        </div>
+
+        <div class="section">
+            <h3>Security & Compliance</h3>
+            <p>We have implemented robust security protocols to protect all data and ensure the integrity of the system. We encourage all users to operate the platform responsibly and in accordance with applicable regulations.</p>
+        </div>
+
+        <div class="section">
+            <p>This website has been created by <strong>Mr. Singh</strong>, who retains full copyright ownership of the platform. All rights associated with this website have been transferred to Gatehouse for operational purposes.</p>
+        </div>
+
+        <div class="section">
+            <h3>Getting Assistance</h3>
+            <p>If you require guidance or assistance with using the platform, please refer to the <a href="index2.html">User Guide</a>, which provides detailed instructions on how to navigate and utilize all features. For information regarding the platform's terms of use and copyright, please review the <a href="legal-page.html">Terms & Conditions</a> below.</p>
+        </div>
+
+        <div class="security-logos">
+            <h4>Security Notice</h4>
+            <div class="logo-container">
+                <img src="file:///C:/website/Security Logo 1.jpg" alt="Security Logo 1" class="security-logo">
+               
+            </div>
+        </div>
+    </div>
+</div>
+
+
+           
+        </div> <button id="toggle-table-btn">Show/Hide Permit Records Table</button>
+
+        <!-- Permit Table -->
+        <table id="permit-table" border="1">
+            <thead>
+                <tr>
+                    <th>Permit No.</th>
+                    <th>Unit Number</th>
+                    <th>Visitor Name</th>
+                    <th>License Plate No</th>
+                    <th>Vehicle Make</th>
+                    <th>Vehicle Color</th>
+                    <th>Officer Name</th>
+                    <th>Issue Date</th>
+                    <th>Expire Date</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+
+     
+    </div><script src="script.js"></script>
+	<div id="guards-info-modal" class="modal">
+    <div class="modal-content">
+        <span class="close-button">&times;</span>
+        <h2>Security Personnel Details</h2>
+        <p>The following is the detailed schedule and roles of our security personnel:</p>
+        <table border="1" style="width: 100%; border-collapse: collapse; text-align: left;">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Role</th>
+                    <th>Shift</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Melbin</td>
+                    <td>Supervisor</td>
+                    <td>Morning (08:00 - 16:00)</td>
+                    <td>Permanent Full-Time</td>
+                </tr>
+                <tr>
+                    <td>Jagroop Singh</td>
+                    <td>Security Officer</td>
+                    <td>Night (00:00 - 08:00)</td>
+                    <td>Permanent Full-Time</td>
+                </tr>
+                <tr>
+                    <td>Kartik</td>
+                    <td>Security Officer</td>
+                    <td>Afternoon (16:00 - 00:00)</td>
+                    <td>Permanent Full-Time</td>
+                </tr>
+                <tr>
+                    <td>Zamil</td>
+                    <td>Security Officer</td>
+                    <td>Night (00:00 - 08:00)</td>
+                    <td>Part-Time Permanent</td>
+                </tr>
+                <tr>
+                    <td>Daniyal</td>
+                    <td>Security Officer</td>
+                    <td>Day (08:00 - 20:00)</td>
+                    <td>Part-Time Permanent</td>
+                </tr>
+                <tr>
+                    <td>Karan</td>
+                    <td>Patrol Guard</td>
+                    <td>Evening (17:00 - 01:00)</td>
+                    <td>Part-Time Permanent</td>
+                </tr>
+                <tr>
+                    <td>Abiy</td>
+                    <td>Patrol Guard</td>
+                    <td>Evening (17:00 - 01:00)</td>
+                    <td>Permanent Full-Time</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.1/xlsx.full.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script src="report.js"></script>
+
+
+    <script>
+	document.getElementById('search-tool-btn').addEventListener('click', function() {
+    var container = document.getElementById('search-tool-container');
+    container.classList.toggle('active');
+});
+
+document.addEventListener("DOMContentLoaded", function () {
+
+    // Get the modal element
+    const modal = document.getElementById("new-updates-modal");
+
+    // Open the modal when the bell button is clicked
+    document.getElementById("new-updates-btn").addEventListener("click", function () {
+        modal.style.display = "block";  // Show the modal
+    });
+
+    // Close the modal when the close button is clicked
+    document.querySelector(".close-button").addEventListener("click", function () {
+        modal.style.display = "none";  // Hide the modal
+    });
+
+    // Close the modal if clicking outside the modal
+    window.addEventListener("click", function (event) {
+        if (event.target === modal) {
+            modal.style.display = "none";  // Hide the modal if clicking outside
+        }
+    });
+});
+
+	// Smoothly toggle the visibility of the search tools
+document.getElementById("search-tool-btn").addEventListener("click", function () {
+    const searchToolContainer = document.getElementById("search-tool-container");
+    searchToolContainer.classList.toggle("open");
+});
+
+
+	const hamburgerToggle = document.getElementById('hamburger-toggle');
+const hamburgerContent = document.querySelector('.hamburger-content');
+
+// Toggle the visibility of the menu
+hamburgerToggle.addEventListener('click', () => {
+    const isVisible = hamburgerContent.style.display === 'block';
+    hamburgerContent.style.display = isVisible ? 'none' : 'block';
+});
+
+// Close menu when clicking outside
+window.addEventListener('click', (e) => {
+    if (!hamburgerToggle.contains(e.target) && !hamburgerContent.contains(e.target)) {
+        hamburgerContent.style.display = 'none';
+    }
+});
+
+	const guardsInfoButton = document.getElementById("guards-info-button");
+const guardsInfoModal = document.getElementById("guards-info-modal");
+const closeGuardsInfoButton = guardsInfoModal.querySelector(".close-button");
+
+// Show the modal
+guardsInfoButton.addEventListener("click", () => {
+    guardsInfoModal.style.display = "block";
+});
+
+// Close the modal
+closeGuardsInfoButton.addEventListener("click", () => {
+    guardsInfoModal.style.display = "none";
+});
+
+// Close the modal when clicking outside it
+window.addEventListener("click", (event) => {
+    if (event.target === guardsInfoModal) {
+        guardsInfoModal.style.display = "none";
+    }
+});
+
+// Info Modal Script
+const infoButton = document.getElementById("info-button");
+const infoModal = document.getElementById("info-modal");
+const closeButton = infoModal.querySelector(".close-button");
+
+// Show the modal
+infoButton.addEventListener("click", () => {
+    infoModal.style.display = "block";
+});
+
+// Close the modal
+closeButton.addEventListener("click", () => {
+    infoModal.style.display = "none";
+});
+
+// Close the modal when clicking outside of it
+window.addEventListener("click", (event) => {
+    if (event.target === infoModal) {
+        infoModal.style.display = "none";
+    }
+});
+
+	// Toggle visibility of the permit records table
+document.getElementById("toggle-table-btn").addEventListener("click", function () {
+    const table = document.getElementById("permit-table");
+    if (table.style.display === "none" || table.style.display === "") {
+        table.style.display = "block";  // Show the table
+    } else {
+        table.style.display = "none";  // Hide the table
+    }
+});
+        let db;
+        let editMode = false;
+        let currentPermitNumber = null;
+
+        // Open or create the database
+        const request = indexedDB.open("permitDB", 1);
+
+        request.onupgradeneeded = function (event) {
+            db = event.target.result;
+            if (!db.objectStoreNames.contains("permits")) {
+                const permitsStore = db.createObjectStore("permits", { keyPath: "permitNumber" });
+                permitsStore.createIndex("unitNumber", "unitNumber", { unique: false });
+            }
+        };
+
+        request.onerror = function (event) {
+            alert("Error opening IndexedDB: " + event.target.errorCode);
+        };
+
+        request.onsuccess = function (event) {
+            db = event.target.result;
+            console.log("Database initialized successfully.");
+            getPermits(); // Fetch permits when DB is ready
+            checkAndResetPermitCount(); // Check and reset the permit count at the start of each month
+            setInterval(checkAndResetPermitCount, 600000); // Check every 10 minutes
+        };
+
+        // Add permit to the database
+        function addPermit(permit) {
+            const transaction = db.transaction("permits", "readwrite");
+            const store = transaction.objectStore("permits");
+            store.add(permit);
+            transaction.oncomplete = function () {
+                console.log("Permit added successfully.");
+                getPermits(); // Refresh the table after adding
+            };
+            transaction.onerror = function (event) {
+                alert("Error adding permit: " + event.target.errorCode);
+            };
+        }
+
+        // Get all permits from IndexedDB
+        function getPermits() {
+            const transaction = db.transaction("permits", "readonly");
+            const store = transaction.objectStore("permits");
+            const request = store.getAll();
+
+            request.onsuccess = function () {
+                displayPermits(request.result);
+            };
+            request.onerror = function (event) {
+                console.error("Error retrieving permits: ", event.target.errorCode);
+            };
+        }
+
+        // Display the permits in the table
+       function displayPermits(permits) {
+    const tableBody = document.getElementById("permit-table").getElementsByTagName("tbody")[0];
+    tableBody.innerHTML = ""; // Clear the table body
+
+    // Sort permits in descending order by Permit Number (or any other field you prefer)
+    permits.sort((a, b) => b.permitNumber - a.permitNumber);
+
+    permits.forEach((permit) => {
+        const row = tableBody.insertRow();
+        row.innerHTML = `
+            <td>${permit.permitNumber}</td>
+            <td>${permit.unitNumber}</td>
+            <td>${permit.visitorName}</td>
+            <td>${permit.licensePlateNo}</td>
+            <td>${permit.vehicleMake}</td>
+            <td>${permit.vehicleColor}</td>
+            <td>${permit.officerName}</td>
+            <td>${permit.issueDate}</td>
+            <td>${permit.expireDate}</td>
+            <td>
+                <button onclick="editPermit('${permit.permitNumber}')">Edit</button>
+                <button onclick="deletePermit('${permit.permitNumber}')">Delete</button>
+            </td>
+        `;
+    });
+}
+		// Search Permits by Permit Number, Unit, or Visitor Name
+    function searchPermits() {
+    const searchInput = document.getElementById("search-permits").value.toLowerCase();
+    const transaction = db.transaction("permits", "readonly");
+    const store = transaction.objectStore("permits");
+    const request = store.getAll();
+
+    request.onsuccess = function () {
+        const results = request.result.filter(permit => {
+            // Convert each field in the permit object to a string and check if it includes the search input
+            return Object.values(permit).some(field => 
+                String(field).toLowerCase().includes(searchInput)
+            );
+        });
+
+        displayPermits(results); // Reuse displayPermits to show the filtered results
+    };
+
+    request.onerror = function () {
+        alert("Error searching permits.");
+    };
+}
+
+
+    // Search Remaining Permits for a Unit in the Current Month
+  function searchRemainingPermits() {
+    const unitNumber = document.getElementById("unit-search").value.toUpperCase();
+    const transaction = db.transaction("permits", "readonly");
+    const store = transaction.objectStore("permits");
+    const index = store.index("unitNumber");
+    const request = index.getAll(unitNumber);
+
+    request.onsuccess = function () {
+        const currentDate = new Date();
+        const currentMonth = currentDate.getMonth();
+        const currentYear = currentDate.getFullYear();
+
+        const permitsThisMonth = request.result.filter(permit => {
+            // Parse issue date correctly in local timezone
+            const [year, month, day] = permit.issueDate.split('-');
+            const permitDate = new Date(year, month - 1, day); // Month is 0-based in JS
+            
+            return permitDate.getMonth() === currentMonth && 
+                   permitDate.getFullYear() === currentYear;
+        });
+
+        const remainingPermits = 7 - permitsThisMonth.length;
+        const message = remainingPermits >= 0 ? 
+            `Remaining permits for unit ${unitNumber}: ${remainingPermits}` :
+            `Unit ${unitNumber} has exceeded permits this month by ${Math.abs(remainingPermits)}`;
+        
+        alert(message);
+    };
+
+    request.onerror = function () {
+        alert("Error retrieving permits for the unit.");
+    };
+}
+        // Delete a permit from IndexedDB
+function deletePermit(permitNumber) {
+    const confirmDelete = confirm("Are you sure you want to delete this permit?");
+    if (!confirmDelete) {
+        return; // Exit if user cancels the action
+    }
+
+    const transaction = db.transaction("permits", "readwrite");
+    const store = transaction.objectStore("permits");
+    store.delete(permitNumber);
+    transaction.oncomplete = function () {
+        console.log("Permit deleted successfully.");
+        getPermits(); // Refresh the table after deletion
+    };
+    transaction.onerror = function (event) {
+        alert("Error deleting permit: " + event.target.errorCode);
+    };
+}
+
+        // Edit a permit
+        function editPermit(permitNumber) {
+            const transaction = db.transaction("permits", "readonly");
+            const store = transaction.objectStore("permits");
+            const request = store.get(permitNumber);
+
+            request.onsuccess = function () {
+                const permit = request.result;
+
+                // Populate the form with the permit's data
+                document.getElementById("unit-number").value = permit.unitNumber;
+                document.getElementById("visitor-name").value = permit.visitorName;
+                document.getElementById("license-plate-no").value = permit.licensePlateNo;
+                document.getElementById("vehicle-make").value = permit.vehicleMake;
+                document.getElementById("vehicle-color").value = permit.vehicleColor;
+                document.getElementById("officer-name").value = permit.officerName;
+                document.getElementById("issue-date").value = permit.issueDate;
+                document.getElementById("expire-date").value = permit.expireDate;
+
+                // Enable edit mode
+                editMode = true;
+                currentPermitNumber = permitNumber;
+            };
+
+            request.onerror = function () {
+                alert("Error retrieving permit data for editing.");
+            };
+        }
+
+        // Get the last permit number from localStorage or IndexedDB
+        function getLastPermitNumber() {
+            return localStorage.getItem("lastPermitNumber") || 0;
+        }
+
+        // Save the last permit number to localStorage
+        function saveLastPermitNumber(number) {
+            localStorage.setItem("lastPermitNumber", number);
+        }
+
+        // Generate a sequential permit number
+        function generatePermitNumber() {
+            let lastPermitNumber = parseInt(getLastPermitNumber()) || 0;
+            const newPermitNumber = (lastPermitNumber + 1).toString().padStart(4, '0');
+            saveLastPermitNumber(newPermitNumber);  // Update last permit number
+            return newPermitNumber;
+        }
+
+        // Check if the unit has issued more than 7 permits in the current month
+        function checkPermitLimit(unitNumber, callback) {
+            const transaction = db.transaction("permits", "readonly");
+            const store = transaction.objectStore("permits");
+            const index = store.index("unitNumber");
+            const request = index.getAll(unitNumber);
+
+            request.onsuccess = function () {
+               const currentDate = new Date();
+    const currentMonth = currentDate.getMonth();
+    const currentYear = currentDate.getFullYear();
+
+    const permitsThisMonth = request.result.filter(permit => {
+        const permitDate = new Date(permit.issueDate);
+        return permitDate.getMonth() === currentMonth && 
+               permitDate.getFullYear() === currentYear;
+    });
+
+                if (permitsThisMonth.length >= 7) {
+                    callback(false); // Permit limit reached
+                } else {
+                    callback(true); // Permit limit not reached
+                }
+            };
+
+            request.onerror = function () {
+                alert("Error checking permit limit.");
+                callback(false);
+            };
+        }
+
+        // Form submission handler
+        document.getElementById("permit-form").addEventListener("submit", function (event) {
+    event.preventDefault(); // Prevent default form submission
+
+    const confirmSubmit = confirm("Are you sure you want to submit this permit?");
+    if (!confirmSubmit) {
+        return; // Exit if user cancels the action
+    }
+
+    const unitNumber = document.getElementById("unit-number").value.toUpperCase();
+    const visitorName = document.getElementById("visitor-name").value;
+    const licensePlateNo = document.getElementById("license-plate-no").value;
+    const vehicleMake = document.getElementById("vehicle-make").value;
+    const vehicleColor = document.getElementById("vehicle-color").value;
+    const officerName = document.getElementById("officer-name").value;
+    const issueDate = document.getElementById("issue-date").value;
+    const expireDate = document.getElementById("expire-date").value;
+
+    // Check unit number format
+    const unitPattern = /^\d{4}\/[A-Z]$/;
+    if (!unitPattern.test(unitNumber)) {
+        alert("Unit number must be in the format '1234/A'.");
+        return;
+    }
+
+    if (editMode) {
+        // Update existing permit logic
+        const transaction = db.transaction("permits", "readwrite");
+        const store = transaction.objectStore("permits");
+        const request = store.get(currentPermitNumber);
+
+        request.onsuccess = function () {
+            const permit = request.result;
+
+            permit.unitNumber = unitNumber;
+            permit.visitorName = visitorName;
+            permit.licensePlateNo = licensePlateNo;
+            permit.vehicleMake = vehicleMake;
+            permit.vehicleColor = vehicleColor;
+            permit.officerName = officerName;
+            permit.issueDate = issueDate;
+            permit.expireDate = expireDate;
+
+            const updateRequest = store.put(permit);
+
+            updateRequest.onsuccess = function () {
+                console.log("Permit updated successfully.");
+                getPermits();
+                resetForm();
+            };
+
+            updateRequest.onerror = function () {
+                alert("Error updating permit.");
+            };
+        };
+
+        request.onerror = function () {
+            alert("Error retrieving permit for editing.");
+        };
+    } else {
+        // Add new permit logic
+        checkPermitLimit(unitNumber, function (isAllowed) {
+            if (isAllowed) {
+                const permitNumber = generatePermitNumber();
+                const newPermit = {
+                    permitNumber,
+                    unitNumber,
+                    visitorName,
+                    licensePlateNo,
+                    vehicleMake,
+                    vehicleColor,
+                    officerName,
+                    issueDate,
+                    expireDate,
+                };
+
+                addPermit(newPermit);
+                resetForm();
+            } else {
+                alert("This unit has already reached the monthly limit of 7 permits.");
+            }
+        });
+    }
+});
+
+
+        // Reset the form and edit mode
+        function resetForm() {
+            document.getElementById("permit-form").reset();
+            editMode = false;
+            currentPermitNumber = null;
+        }
+		 // Export Permits to Excel
+    document.getElementById("export-btn").addEventListener("click", function () {
+        const transaction = db.transaction("permits", "readonly");
+        const store = transaction.objectStore("permits");
+        const request = store.getAll();
+
+        request.onsuccess = function () {
+            const data = request.result.map(permit => ({
+                "Permit No.": permit.permitNumber,
+                "Unit Number": permit.unitNumber,
+                "Visitor Name": permit.visitorName,
+                "License Plate No": permit.LicensePlateNo,
+                "Vehicle Make": permit.vehicleMake,
+                "Vehicle Color": permit.vehicleColor,
+                "Officer Name": permit.officerName,
+                "Issue Date": permit.issueDate,
+                "Expire Date": permit.expireDate,
+            }));
+
+            const worksheet = XLSX.utils.json_to_sheet(data);
+            const workbook = XLSX.utils.book_new();
+            XLSX.utils.book_append_sheet(workbook, worksheet, "Permits");
+
+            XLSX.writeFile(workbook, "PermitRecords.xlsx");
+        };
+
+        request.onerror = function () {
+            alert("Error exporting permits.");
+        };
+    });
+    </script>
+</body>
+</html>
